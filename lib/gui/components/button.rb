@@ -1,7 +1,9 @@
 module Gui
   module Components
     require "java"
-    require "gui/components/events/focus_events"
+    require "events/focus_events"
+    require "options"
+    require "listener"
     include_package 'javax.swing'
     ActionListener = java.awt.event.ActionListener
     

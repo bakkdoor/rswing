@@ -1,10 +1,10 @@
 module Gui
   module Components
     require "java"
-    require "gui/components/container"
-    require "gui/components/events/key_events"
-    require "gui/components/events/mouse_events"
-    require "gui/components/events/focus_events"
+    require "container"
+    require "events/key_events"
+    require "events/mouse_events"
+    require "events/focus_events"
     include_package 'javax.swing'
     
     class Panel < JPanel

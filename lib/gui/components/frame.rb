@@ -1,7 +1,7 @@
 module Gui
   module Components
     require "java"
-    require "gui/components/container"
+    require "container"
     class Frame < javax.swing.JFrame
       include Container
       

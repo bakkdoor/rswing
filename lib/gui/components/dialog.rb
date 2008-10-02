@@ -1,7 +1,7 @@
 module Gui
   module Components
     require "java"
-    require "gui/components/container"
+    require "container"
     
     JOptionPane = javax.swing.JOptionPane
     JDialog = javax.swing.JDialog

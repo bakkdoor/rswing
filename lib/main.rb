@@ -1,10 +1,15 @@
-module Main
-  #Java.set_deprecated_interface_syntax true
-  
+module Gui
   require "java"
   include_package 'javax.swing'
-  Dir.glob(File.join(File.dirname(__FILE__), 'gui/components/*.rb')).each {|f| require f }
-  include Gui
+  #Dir.glob(File.join(File.dirname(__FILE__), 'gui/components/*.rb')).each {|f| require f }
+  #Dir.glob(File.join(File.dirname(__FILE__), 'gui/components/events/*.rb')).each {|f| require f }
+
+  $: << File.expand_path(File.dirname(__FILE__) + "/gui/components")
+
+  require "frame"
+  require "button"
+  require "dialog"
+  
   include Gui::Components
   
   # geht genauso wie die 'normale' variante:
