@@ -20,8 +20,9 @@ module Gui
       end
       
       protected
+      # liste von hashes, die jeweils so aussehen: {:okButton => buttonObject}
       def component_hash
-        @component_hash ||= {} # liste von hashes, die jeweils so aussehen: {:okButton => buttonObject}
+        @component_hash ||= {}
       end
     end
   end
