@@ -13,12 +13,14 @@ module Gui
           :option_values => ["Ja", "Nein"],
           :icon => nil,
           :belongs_to => nil,
-          :layout => nil
+          :layout => nil,
+          :title => "",
+          :name => nil
         }
       end
 
-      # gibt wert eines angegebenen keys (als wert des hashs) zurück
-      # falls wert nicht in hash angegeben, nimm default-wert aus gui_options-hash.
+      # Gibt Wert eines angegebenen Keys (als Wert des Hashs) zurück
+      # Falls Wert nicht in Hash angegeben, nimm Default-Wert aus <tt>gui_options</tt>-hash.
       def self.value_for(hash)
         hash.each_pair do |options_hash, option_key|
           # es sollte nur ein paar angegeben werden, sodass wir einfach nur das erste nehmen

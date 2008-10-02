@@ -7,14 +7,16 @@ module Main
   include Gui
   include Gui::Components
   
-  frame = JFrame.new("hallo, welt")
+  frame = Frame.new("hallo, welt")
   frame.default_close_operation = JFrame::EXIT_ON_CLOSE
   
-  layout_options = GridBagContraint.new()
+  #layout_options = GridBagContraint.new()
   
-  Button.new("test", :belongs_to => frame, :layout => layout_options) do |btn|
+  Button.new("test", :belongs_to => frame, :name => :testButton) do |btn|
     btn.on_click do
       Dialog.show(frame, "mein text", :dialog_type => :error, :title => "hello, world")
+#      Dialog.showOption frame, "bitte auswählen:", :option_type => :yes_no,
+#        :option_values => ["Aha", "ohno"], :title => "auswahl treffen!"
     end
   
     btn.on_focus do
@@ -26,6 +28,7 @@ module Main
     end
   end
   
+  puts "text von testButton: #{frame[:testButton].text}"
   
   frame.pack
   

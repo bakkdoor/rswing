@@ -3,7 +3,15 @@ module Gui
     require "java"
     JOptionPane = javax.swing.JOptionPane
     
+    # Dialog-Klasse. Stellt statische Methoden bereit um Message-Dialoge zu erstellen.
     class Dialog
+      # Erstellt einen MessageDialog.
+      # - <tt>parent</tt>: Parent-Container für diesen Dialog.
+      # - <tt>message</tt>: Nachricht, welche in dem Dialog dargestellt wird.
+      # - <tt>options</tt>: Options-Hash mit folgenden gültigen Werten:
+      # 1. <tt>:dialog_type => (:error | :question | :plain | :warning | :info)</tt> (default: :info)
+      # 2. <tt>:title => "mein titel"</tt> (defailt: <tt>""</tt>)
+      # 3. <tt>:modal => false</tt> (default: true)
       def self.show(parent, message, options = {})
         message_type =
           case Options.value_for(options => :dialog_type)
@@ -22,6 +30,15 @@ module Gui
         JOptionPane.showMessageDialog(parent, message, Options.value_for(options => :title), message_type)
       end
       
+      # Erstellt OptionsDialog (Dialog mit Auswahl mehrerer Optionen)
+      # - <tt>parent</tt>: Parent-Container für diesen Dialog.
+      # - <tt>message</tt>: Nachricht, welche in dem Dialog dargestellt wird.
+      # - <tt>options</tt>: Options-Hash mit folgenden gültigen Werten:
+      # 1. <tt>:option_type => (:yes_no | :yes_no_cancel)</tt> (default: <tt>:yes_no</tt>)
+      # 2. <tt>:option_values => ["OK", "Cancel", "Quit"]</tt> (default: <tt>["Ja", "Nein"]</tt>)
+      # 3. <tt>:title => "mein titel"</tt> (default: <tt>""</tt>)
+      # 4. <tt>:modal => false</tt> (default: <tt>true</tt>)
+      # 5. <tt>:icon => nil</tt> (default: keins)
       def self.showOption(parent, message, options = {})
         title = options[:title].nil? ? "Bitte wählen Sie" : options[:title]
         icon = Options.value_for(options => :icon) 
