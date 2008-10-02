@@ -2,10 +2,16 @@ module Gui
   module Components
     require "java"
     require "gui/components/container"
+    require "gui/components/events/key_events"
+    require "gui/components/events/mouse_events"
+    require "gui/components/events/focus_events"
     include_package 'javax.swing'
     
     class Panel < JPanel
       include Container
+      include Events::KeyEvents
+      include Events::MouseEvents
+      include Events::FocusEvents
       
       def initialize(layout_manager, options = {}, &block)
         super(layout_manager, Options.value_for(options => :double_buffer))
@@ -29,7 +35,6 @@ module Gui
           self.add_with_name(component, name)
         end
       end
-    end
-    
+    end 
   end
 end

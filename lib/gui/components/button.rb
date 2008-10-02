@@ -1,13 +1,13 @@
 module Gui
   module Components
-    
     require "java"
+    require "gui/components/events/focus_events"
     include_package 'javax.swing'
-    FocusListener = java.awt.event.FocusListener
     ActionListener = java.awt.event.ActionListener
     
     # Button-Klasse. Instanzen wrappen JButton Objekte.
     class Button < JButton
+      include Events::FocusEvents
       
       # - <tt>text</tt>: Der Text, der auf dem Button stehen soll
       # - <tt>options</tt>: Options-Hash mit folgenden fültigen werten:
@@ -19,7 +19,7 @@ module Gui
       # 6. <tt>:name => :okButton</tt> Name des Buttons für Zugriff über parent-container (default: keiner)
       def initialize(text, options = {}, &block)
         super(text)
-
+        
         self.visible = Options.value_for(options => :visible)
         self.enabled = Options.value_for(options => :enabled)
         self.icon = Options.value_for(options => :icon)
@@ -42,18 +42,6 @@ module Gui
       # Nimmt einen block, welcher dann bei diesem Event ausgeführt wird.
       def on_click(&block)
         self.add_action_listener(Listener.create(ActionListener, :actionPerformed, &block))
-      end
-      
-      # Eventhandler für focus (focusGained) Event.
-      # Nimmt einen block, welcher dann bei diesem Event ausgeführt wird.
-      def on_focus(&block)
-        self.add_focus_listener(Listener.create(FocusListener, :focusGained ,&block))
-      end
-      
-      # Eventhandler für focus_lost (focusLost) Event.
-      # Nimmt einen block, welcher dann bei diesem Event ausgeführt wird.
-      def on_focus_lost(&block)
-        self.add_focus_listener(Listener.create(FocusListener, :focusLost ,&block))
       end
     end 
   end
