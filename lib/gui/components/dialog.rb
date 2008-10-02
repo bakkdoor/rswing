@@ -1,10 +1,15 @@
 module Gui
   module Components
     require "java"
+    require "Gui/Components/container"
+    
     JOptionPane = javax.swing.JOptionPane
+    JDialog = javax.swing.JDialog
     
     # Dialog-Klasse. Stellt statische Methoden bereit um Message-Dialoge zu erstellen.
-    class Dialog
+    class Dialog < JDialog
+      include Container
+      
       # Erstellt einen MessageDialog.
       # - <tt>parent</tt>: Parent-Container für diesen Dialog.
       # - <tt>message</tt>: Nachricht, welche in dem Dialog dargestellt wird.

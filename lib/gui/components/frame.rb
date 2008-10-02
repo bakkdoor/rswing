@@ -5,8 +5,13 @@ module Gui
     class Frame < javax.swing.JFrame
       include Container
       
-      def initialize(title)
+      def initialize(title, &block)
         super(title)
+        
+        # falls block übergeben wurde, mit aktuellem objekt aufrufen
+        if block_given?
+          yield self
+        end
       end
       
       def add(component, options = {})
