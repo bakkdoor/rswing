@@ -1,7 +1,7 @@
 module Gui
   module Components
     require "java"
-    require "Gui/Components/container"
+    require "gui/components/container"
     
     JOptionPane = javax.swing.JOptionPane
     JDialog = javax.swing.JDialog
@@ -9,6 +9,36 @@ module Gui
     # Dialog-Klasse. Stellt statische Methoden bereit um Message-Dialoge zu erstellen.
     class Dialog < JDialog
       include Container
+      
+      def initialize(owner, title, options = {}, &block)
+        super(owner, title, Options.value_for(options => :modal))
+        
+        if(name = Options.value_for(options => :name) && owner.class.include?(Container))
+          owner.add_with_name(self, name)
+        end
+        
+        # block aufrufen mit aktuellem objekt, falls vorhanden
+        if block_given?
+          yield self
+        end
+        
+      end
+      
+      def add(component, options = {})
+        if(layout = Options.value_for(options => :layout))
+          self.content_pane.add(component, layout)
+        else
+          self.content_pane.add(component)
+        end
+        
+        
+        # wenn :name angegeben wurde, mit aufnehmen
+        if(name = Options.value_for(options => :name))
+          self.add_with_name(component, name)
+        end
+        
+        component #zurückgeben
+      end
       
       # Erstellt einen MessageDialog.
       # - <tt>parent</tt>: Parent-Container für diesen Dialog.

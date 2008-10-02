@@ -8,14 +8,16 @@ module Gui
           :visible => true,
           :editable => true,
           :resizable => true,
+          :modal => true,
           :dialog_type => :info,
           :option_type => :yes_no,
           :option_values => ["Ja", "Nein"],
           :icon => nil,
           :belongs_to => nil,
           :layout => nil,
-          :title => "",
-          :name => nil
+          :title => nil,
+          :name => nil,
+          :double_buffer => true
         }
       end
 
