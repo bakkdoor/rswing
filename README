@@ -1,5 +1,10 @@
 == RSwing - Swing wrapper for JRuby
 
+RSwing is licensed under the GNU LGPL v3. For more information, take a look at
+the LICENSE file.
+
+================================================================================
+
 RSwing is a wrapper of the Swing GUI-Framework of the Java Platform for JRuby.
 The goal is to provide a ruby-ish wrapper library to Swing, which makes it feel
 more like an actual ruby library rather than just a plain interface to the java
@@ -7,6 +12,8 @@ classes.
 
 For example, RSwing tries to make heavy use of blocks, symbols and similar 
 typical ruby concepts.
+
+================================================================================
 
 Some examples:
 
