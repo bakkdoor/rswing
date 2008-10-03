@@ -1,3 +1,45 @@
-== RSwing
+== RSwing - Swing wrapper for JRuby
 
-You should document your project here.
+RSwing is a wrapper of the Swing GUI-Framework of the Java Platform for JRuby.
+The goal is to provide a ruby-ish wrapper library to Swing, which makes it feel
+more like an actual ruby library rather than just a plain interface to the java
+classes.
+
+For example, RSwing tries to make heavy use of blocks, symbols and similar 
+typical ruby concepts.
+
+Some examples:
+
+  Frame.new("hello, world") do |frame|
+    frame.default_close_operation = :exit_on_close
+    frame.size = java.awt.Dimension.new(200,200)
+
+    # create a new button, belonging to this frame with a given name to access it easily later
+    Button.new("OK", :belongs_to => frame, :name => :okButton) do |btn|
+
+      btn.on_click do
+        Dialog.show frame, "Button clicked!", :dialog_type => :info, :title => "My Title"
+      end
+
+      btn.on_focus do
+        puts "button has now focus"
+      end
+
+      btn.on_focus_lost do
+        puts "button has lost focus"
+      end
+    end
+
+    # accessing components of frame via :name attribute given to button:
+    puts "text property of : #{frame[:okButton].text}"
+
+    # options-dialog
+    options = ["Yes", "No", "Cancel"]
+    selected_value = Dialog.showOption(frame, options.join(" or ") + "?",
+                                        :option_values => options, 
+                                        :option_type => :yes_no_cancel)
+
+    puts "#{selected_value} was selected"
+
+    frame.visible = true
+  end
