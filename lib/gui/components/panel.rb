@@ -26,6 +26,8 @@ module Gui
         if block_given?
           yield self
         end
+        
+        Container.add_if_requested(self, options)
       end
       
       def add(component, options = {})

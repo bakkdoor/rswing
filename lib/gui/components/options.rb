@@ -9,6 +9,7 @@ module Gui
           :editable => true,
           :resizable => true,
           :modal => true,
+          :double_buffer => true,
           :dialog_type => :info,
           :option_type => :yes_no,
           :option_values => ["Ja", "Nein"],
@@ -17,7 +18,10 @@ module Gui
           :layout => nil,
           :title => nil,
           :name => nil,
-          :double_buffer => true
+          :font => nil,
+          :doc => nil,
+          :columns => 10,
+          :text => ""
         }
       end
 

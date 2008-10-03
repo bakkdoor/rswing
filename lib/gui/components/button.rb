@@ -31,13 +31,7 @@ module Gui
           yield self
         end
         
-        if(container = Options.value_for(options => :belongs_to))
-          if(Options.value_for(options => :layout) || Options.value_for(options => :name))
-            container.add(self, options)
-          else
-            container.add(self)
-          end
-        end
+        Container.add_if_requested(self, options)
       end
 
       # Eventhandler für clicked (actionPerfomed) Event.

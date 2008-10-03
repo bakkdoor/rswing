@@ -19,6 +19,18 @@ module Gui
         end
       end
       
+      # fügt ein component einem container hinzu, falls dieser in options
+      # via :belongs_to angegeben wurde.
+      def self.add_if_requested(component, options)
+        if(container = Options.value_for(options => :belongs_to))
+          if(Options.value_for(options => :layout) || Options.value_for(options => :name))
+            container.add(component, options)
+          else
+            container.add(component)
+          end
+        end
+      end
+      
       protected
       # liste von hashes, die jeweils so aussehen: {:okButton => buttonObject}
       def component_hash
