@@ -19,8 +19,8 @@ module Gui
         self.component_hash.delete_if { |key,value| value == component }
       end
       
-      # Gibt das Component mit einem angegebenen Namen innerhalb dieses Containers zurück.
-      # * <tt>name_symbol</tt> Name (als Symbol) des Components, das man haben möchte.
+      # Returns the component with a given name inside of this container (if available).
+      # * <tt>name_symbol</tt> Name (as symbol) of the component to get.
       def [](name_symbol)
         if self.component_hash.has_key?(name_symbol)
           self.component_hash[name_symbol] # erstes hash mit diesem namen als key zurückgeben
@@ -29,8 +29,7 @@ module Gui
         end
       end
       
-      # fügt ein component einem container hinzu, falls dieser in options
-      # via :belongs_to angegeben wurde.
+      # Adds a component to a container, if specified via :belongs_to in options.
       def self.add_if_requested(component, options)
         if(container = Options.value_for(options => :belongs_to))
           if(Options.value_for(options => :layout) || Options.value_for(options => :name))
@@ -42,7 +41,9 @@ module Gui
       end
       
       protected
-      # liste von hashes, die jeweils so aussehen: {:okButton => buttonObject}
+      # Name-Component-hash.
+      # For example:
+      # * <tt>{:okButton => okButtonObject, :cancelButton => cancelButtonObject}</tt>
       def component_hash
         @component_hash ||= {}
       end
