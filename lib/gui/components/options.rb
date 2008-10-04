@@ -1,7 +1,7 @@
 module Gui
   module Components
     class Options
-      # hash aller default-werte für gui-optionen.
+      # Hash of all valid default-values for rswing options.
       def self.gui_options
         {
           :enabled => true,
@@ -25,8 +25,11 @@ module Gui
         }
       end
 
-      # Gibt Wert eines angegebenen Keys (als Wert des Hashs) zurück
-      # Falls Wert nicht in Hash angegeben, nimm Default-Wert aus <tt>gui_options</tt>-hash.
+      # Returns the value of a key (which is given as the value of the hash).
+      # If the value to the key isn't given in the hash, return the 
+      # default-value from <tt>gui_options</tt>-hash.
+      # * Example:
+      #     <tt>Options.value_for(options => :name)</tt>
       def self.value_for(hash)
         hash.each_pair do |options_hash, option_key|
           # es sollte nur ein paar angegeben werden, sodass wir einfach nur das erste nehmen

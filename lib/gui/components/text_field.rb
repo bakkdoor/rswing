@@ -2,7 +2,7 @@ module Gui
   module Components
   
     class TextField < javax.swing.JTextField
-      # valid options are:
+      # Valid options are:
       # 1. <tt>:text => "text"</tt> (default: "")
       # 2. <tt>:columns => 5</tt> (default: 10)
       # 3. <tt>:doc => nil</tt> (default: nil)

@@ -1,11 +1,23 @@
 module Gui
   module Components
     module Container
+      # Adds a component to the component_hash with a given name symbol.
+      # Raises an exception if name already taken.
       def add_with_name(component, name_symbol)
         if self.component_hash.has_key?(name_symbol)
           raise "Name in Component bereits vergeben!"
         else
           self.component_hash[name_symbol] = component
+        end
+      end
+      
+      # Removes a component from this container. 
+      # Also removes it from the component_hash
+      def remove(component)
+        super.remove(component)
+        # delete all entries with component as value in component_hash
+        if(self.component_hash.has_value?(component))
+          self.component_hash.delete_if { |key,value| value == component }
         end
       end
       

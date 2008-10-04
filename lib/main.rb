@@ -1,7 +1,6 @@
 module Gui
-  require "java"
+  require "rswing"
   include_package 'javax.swing'
-  $: << File.expand_path(File.dirname(__FILE__) + "/gui/components")
 
   require "frame"
   require "button"
@@ -13,7 +12,7 @@ module Gui
   # frame = Frame.new("hallo, welt")
   # ... # hier dann einfach auch zugriffe auf frame
   Frame.new("hallo, welt") do |frame|
-    frame.default_close_operation = JFrame::EXIT_ON_CLOSE
+    frame.default_close_operation = :exit_on_close
 
     Button.new("test", :belongs_to => frame, :name => :testButton) do |btn|
 
