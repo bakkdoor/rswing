@@ -16,9 +16,7 @@ module Gui
       def remove(component)
         super.remove(component)
         # delete all entries with component as value in component_hash
-        if(self.component_hash.has_value?(component))
-          self.component_hash.delete_if { |key,value| value == component }
-        end
+        self.component_hash.delete_if { |key,value| value == component }
       end
       
       # Gibt das Component mit einem angegebenen Namen innerhalb dieses Containers zurück.
