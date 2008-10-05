@@ -9,7 +9,8 @@ Gem::Specification.new do |s|
    s.email = "bakkdoor@flasht.de"
    s.homepage = "http://github.com/bakkdoor/rswing"
    s.has_rdoc = true
-   s.files = [ "README", "LICENSE", "Rakefile", "lib/rswing.rb", "lib/rswing/components/*.rb", "lib/rswing/components/events/*.rb" ]
+   s.files = [ "README", "LICENSE", "Rakefile", "lib/rswing.rb" ]
+   s.files << Dir['lib/rswing/components/*.rb'] + Dir['lib/rswing/components/events/*.rb']
    s.test_files = []
    s.extra_rdoc_files = ["README"]
    s.rdoc_options = ["--main", "README"]
