@@ -11,7 +11,6 @@ Gem::Specification.new do |s|
    s.has_rdoc = true
    s.files = [ "README", "LICENSE", "Rakefile", "lib/rswing.rb" ]
    s.files << Dir['lib/rswing/components/*.rb'] + Dir['lib/rswing/components/events/*.rb']
-   s.test_files = []
    s.extra_rdoc_files = ["README"]
    s.rdoc_options = ["--main", "README"]
    s.requirements << 'none'
