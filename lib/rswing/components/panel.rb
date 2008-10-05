@@ -1,4 +1,4 @@
-module Gui
+module RSwing
   module Components
     require "java"
     require "container"

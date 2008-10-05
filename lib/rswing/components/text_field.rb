@@ -1,4 +1,4 @@
-module Gui
+module RSwing
   module Components
   
     class TextField < javax.swing.JTextField

@@ -1,4 +1,4 @@
-module Gui
+module RSwing
   module Components
     module Container
       # Adds a component to the component_hash with a given name symbol.

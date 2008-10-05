@@ -1,4 +1,4 @@
-module Gui
+module Main
   require "rswing"
   include_package 'javax.swing'
 
@@ -6,7 +6,7 @@ module Gui
   require "button"
   require "dialog"
   
-  include Gui::Components
+  include RSwing::Components
   
   # geht genauso wie die 'normale' variante:
   # frame = Frame.new("hallo, welt")

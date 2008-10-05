@@ -1,4 +1,4 @@
-module Gui
+module RSwing
   module Components
     module Events
       module FocusEvents

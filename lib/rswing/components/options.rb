@@ -1,4 +1,4 @@
-module Gui
+module RSwing
   module Components
     class Options
       # Hash of all valid default-values for rswing options.

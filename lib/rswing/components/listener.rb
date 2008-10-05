@@ -1,4 +1,4 @@
-module Gui
+module RSwing
   module Components
     class Listener
       # Erstellt eine Listener-Klasse des angegebenen listener_interfaces 
