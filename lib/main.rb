@@ -12,12 +12,12 @@ module Main
     Button.new("test", :belongs_to => frame, :name => :testButton) do |btn|
 
       btn.on_click do
-        Dialog.showOption frame, "bitte auswählen:", :option_type => :yes_no,
-          :option_values => ["Aha", "ohno"], :title => "auswahl treffen!"
+        Dialog.showOption "bitte auswählen:", :option_type => :yes_no, :option_values => ["Aha", "ohno"],
+          :title => "auswahl treffen!", :belongs_to => frame
       end
 
       btn.on_click do
-        Dialog.show(frame, "mein text", :dialog_type => :error, :title => "hello, world")
+        Dialog.show("mein text", :dialog_type => :error, :title => "hello, world", :belongs_to => frame)
       end
 
 
@@ -35,17 +35,19 @@ module Main
     frame.size = java.awt.Dimension.new(200,200)
 
     options = ["Herr", "Frau", "Geek"]
-    selected_value = Dialog.showOption(frame, options.join(" oder ") + "?", :option_values => options, :option_type => :yes_no_cancel)
+    selected_value = Dialog.showOption(options.join(" oder ") + "?",
+      :option_values => options, :option_type => :yes_no_cancel, :belongs_to => frame)
+    
     puts "#{selected_value} wurde ausgewählt"
 
     frame.visible = true
   end
 
   # dialog testen
-  Dialog.new(nil, "mein titel", :modal => true) do |dial|
+  Dialog.new("mein titel", :modal => true) do |dial|
     Button.new("click me", :belongs_to => dial, :name => :clickButton) do |button|
       button.on_click do
-        Dialog.show(nil, "test dialog", :dialog_type => :info, :title => "hey, was geht?")
+        Dialog.show("test dialog", :dialog_type => :info, :title => "hey, was geht?")
       end
     end
     

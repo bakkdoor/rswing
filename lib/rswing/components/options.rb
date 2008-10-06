@@ -12,7 +12,7 @@ module RSwing
           :double_buffer => true,
           :dialog_type => :info,
           :option_type => :yes_no,
-          :option_values => ["Ja", "Nein"],
+          :option_values => ["Yes", "No"],
           :icon => nil,
           :belongs_to => nil,
           :layout => nil,

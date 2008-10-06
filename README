@@ -25,7 +25,7 @@ Some examples:
     Button.new("OK", :belongs_to => frame, :name => :okButton) do |btn|
 
       btn.on_click do
-        Dialog.show frame, "Button clicked!", :dialog_type => :info, :title => "My Title"
+        Dialog.show "Button clicked!", :dialog_type => :info, :title => "My Title", :belongs_to => frame
       end
 
       btn.on_focus do
@@ -42,9 +42,10 @@ Some examples:
 
     # options-dialog
     options = ["Yes", "No", "Cancel"]
-    selected_value = Dialog.showOption(frame, options.join(" or ") + "?",
+    selected_value = Dialog.showOption(options.join(" or ") + "?",
                                         :option_values => options, 
-                                        :option_type => :yes_no_cancel)
+                                        :option_type => :yes_no_cancel,
+                                        :belongs_to => frame)
 
     puts "#{selected_value} was selected"
 
