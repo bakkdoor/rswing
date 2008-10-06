@@ -13,6 +13,7 @@ module RSwing
           :dialog_type => :info,
           :option_type => :yes_no,
           :option_values => ["Yes", "No"],
+          :option_default_title => "Please select:",
           :icon => nil,
           :belongs_to => nil,
           :layout => nil,
@@ -31,6 +32,7 @@ module RSwing
       # * Example:
       #     <tt>Options.value_for(options => :name)</tt>
       def self.value_for(hash)
+        raise "Value must be a hash!" unless hash.kind_of? Hash
         hash.each_pair do |options_hash, option_key|
           # es sollte nur ein paar angegeben werden, sodass wir einfach nur das erste nehmen
           # und den entsprechenden wert zurückgeben

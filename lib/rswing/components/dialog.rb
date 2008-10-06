@@ -77,7 +77,7 @@ module RSwing
       # 5. <tt>:icon => nil</tt> (default: nil)
       # 6. <tt>:belongs_to => parent</tt> Parent-Container for this dialog (default: nil)
       def self.showOption(message, options = {})
-        title = options[:title].nil? ? "Bitte wählen Sie" : options[:title]
+        title = options[:title].nil? ? Options.gui_options[:option_default_title] : options[:title]
         icon = Options.value_for(options => :icon) 
         
         option_type = option_type_for(Options.value_for(options => :option_type))
