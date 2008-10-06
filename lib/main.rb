@@ -1,11 +1,6 @@
 module Main
   require "rswing"
-  include_package 'javax.swing'
 
-  require "frame"
-  require "button"
-  require "dialog"
-  
   include RSwing::Components
   
   # geht genauso wie die 'normale' variante:
