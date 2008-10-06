@@ -1,8 +1,8 @@
 module RSwing
   module Components
-    require "options"
+    JTextField = javax.swing.JTextField
     
-    class TextField < javax.swing.JTextField
+    class TextField < JTextField
       # Valid options are:
       # 1. <tt>:text => "text"</tt> (default: "")
       # 2. <tt>:columns => 5</tt> (default: 10)

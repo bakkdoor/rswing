@@ -1,11 +1,7 @@
 module RSwing
   module Components
-    require "java"
-    require "events/focus_events"
-    require "options"
-    require "listener"
-    include_package 'javax.swing'
     ActionListener = java.awt.event.ActionListener
+    JButton = javax.swing.JButton
     
     # Button-Class. Wraps JButton-Class.
     class Button < JButton

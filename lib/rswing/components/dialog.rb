@@ -1,8 +1,5 @@
 module RSwing
   module Components
-    require "java"
-    require "container"
-    
     JOptionPane = javax.swing.JOptionPane
     JDialog = javax.swing.JDialog
     

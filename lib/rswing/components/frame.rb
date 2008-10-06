@@ -1,7 +1,5 @@
 module RSwing
   module Components
-    require "java"
-    require "container"
     JFrame = javax.swing.JFrame
     
     class Frame < JFrame

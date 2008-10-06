@@ -1,11 +1,6 @@
 module RSwing
   module Components
-    require "java"
-    require "container"
-    require "events/key_events"
-    require "events/mouse_events"
-    require "events/focus_events"
-    include_package 'javax.swing'
+    JPanel = javax.swing.JPanel
     
     class Panel < JPanel
       include Container
