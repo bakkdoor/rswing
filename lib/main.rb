@@ -6,7 +6,7 @@ module Main
   # geht genauso wie die 'normale' variante:
   # frame = Frame.new("hallo, welt")
   # ... # hier dann einfach auch zugriffe auf frame
-  Frame.new("hallo, welt") do |frame|
+  Frame.new("hallo, welt", :size => [800, 600]) do |frame|
     frame.default_close_operation = :exit_on_close
 
     Button.new("test", :belongs_to => frame, :name => :testButton) do |btn|
@@ -32,7 +32,7 @@ module Main
 
     puts "text von testButton: #{frame[:testButton].text}"
 
-    frame.size = java.awt.Dimension.new(200,200)
+    #frame.size = [400, 400]
 
     options = ["Herr", "Frau", "Geek"]
     selected_value = Dialog.showOption(options.join(" oder ") + "?",

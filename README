@@ -19,7 +19,7 @@ Some examples:
 
   Frame.new("hello, world") do |frame|
     frame.default_close_operation = :exit_on_close
-    frame.size = java.awt.Dimension.new(200,200)
+    frame.size = [200,200]
 
     # create a new button, belonging to this frame with a given name to access it easily later
     Button.new("OK", :belongs_to => frame, :name => :okButton) do |btn|

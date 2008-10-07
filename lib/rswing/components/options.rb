@@ -21,6 +21,7 @@ module RSwing
           :name => nil,
           :font => nil,
           :doc => nil,
+          :size => nil,
           :columns => 10,
           :text => ""
         }
