@@ -8,11 +8,11 @@ module RSwing
           self.add_to_content_pane(component, options)
         else
 #          this should be handled somehow later on:
-#          if(layout = Options.value_for(options => :layout))
-#            super(component, layout)
-#          else
+          if(layout = Options.value_for(options => :layout))
+            super(component, layout)
+          else
              super(component)
-#          end
+          end
         end
         
         # if :name given, add with name

@@ -17,6 +17,7 @@ module RSwing
           :icon => nil,
           :belongs_to => nil,
           :layout => nil,
+          :layout_manager => nil,
           :title => nil,
           :name => nil,
           :font => nil,
