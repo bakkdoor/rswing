@@ -10,8 +10,10 @@ require "events/key_events"
 require "events/mouse_events"
 
 # containers
-require "button"
 require "container"
+require "window"
+
+require "button"
 require "dialog"
 require "frame"
 require "listener"
