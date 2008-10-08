@@ -8,10 +8,13 @@ module RSwing
     # (<tt>show()</tt> and <tt>showOptions</tt>).
     # Can also be used to create custom dialogs by extending from this class.
     class Dialog < JDialog
+      include Window
       include Container
       
       def initialize(title, options = {}, &block)
         super(Options.value_for(options => :belongs_to), title, Options.value_for(options => :modal))
+        
+        Window.init(self, options)
         
         if(name = Options.value_for(options => :name) && owner.class.include?(Container))
           owner.add_with_name(self, name)
@@ -21,7 +24,6 @@ module RSwing
         if block_given?
           yield self
         end
-        
       end
       
       # Creates a MessageDialog.

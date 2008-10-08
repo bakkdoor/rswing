@@ -3,6 +3,7 @@ module RSwing
     JFrame = javax.swing.JFrame
     
     class Frame < JFrame
+      include Window
       include Container
       
       # valid options are:
@@ -10,9 +11,7 @@ module RSwing
       def initialize(title, options = {}, &block)
         super(title)
         
-        if(size = Options.value_for(options => :size))
-          self.size = size
-        end
+        Window.init(self, options)
         
         # falls block übergeben wurde, mit aktuellem objekt aufrufen
         if block_given?
@@ -36,16 +35,6 @@ module RSwing
           self.setDefaultCloseOperation(WindowConstants::DISPOSE_ON_CLOSE)
         when :exit_on_close
           self.setDefaultCloseOperation(JFrame::EXIT_ON_CLOSE)
-        end
-      end
-      
-      # Sets the size of the frame. Should be a two-dimensional Array of Integers.
-      # Example: <tt>frame.size = [800, 600] # 800x600 pixels</tt> 
-      def size=(new_size = nil) 
-        if new_size && new_size.kind_of?(Array)
-          self.setSize(java.awt.Dimension.new(new_size[0], new_size[1]))
-        elsif new_size.kind_of? java.awt.Dimension
-          self.setSize(new_size)
         end
       end
     end
