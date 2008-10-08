@@ -1,6 +1,28 @@
 module RSwing
   module Components
     module Container
+      
+      # Adds a component with a set of options to this container.
+      def add(component, options = {})
+        if(self.respond_to?(:getContentPane))
+          self.add_to_content_pane(component, options)
+        else
+#          this should be handled somehow later on:
+#          if(layout = Options.value_for(options => :layout))
+#            super(component, layout)
+#          else
+             super(component)
+#          end
+        end
+        
+        # if :name given, add with name
+        if(name = Options.value_for(options => :name))
+          self.add_with_name(component, name)
+        end
+        
+        component # return component
+      end
+      
       # Adds a component to the component_hash with a given name symbol.
       # Raises an exception if name already taken.
       def add_with_name(component, name_symbol)
@@ -46,6 +68,18 @@ module RSwing
       # * <tt>{:okButton => okButtonObject, :cancelButton => cancelButtonObject}</tt>
       def component_hash
         @component_hash ||= {}
+      end
+      
+      # Adds a component with given options to the <tt>content_pane</tt> of a container.
+      # This will only work, if the container actually has a <tt>content_pane</tt>
+      # and should only be called by the <tt>add()</tt> method inside of the
+      # <tt>container</tt> module.
+      def add_to_content_pane(component, options)
+        if(layout = Options.value_for(options => :layout))
+          self.content_pane.add(component, layout)
+        else
+          self.content_pane.add(component)
+        end
       end
     end
   end

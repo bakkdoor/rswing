@@ -24,23 +24,6 @@ module RSwing
         
       end
       
-      # Adds a component with a set of options to this dialog.
-      def add(component, options = {})
-        if(layout = Options.value_for(options => :layout))
-          self.content_pane.add(component, layout)
-        else
-          self.content_pane.add(component)
-        end
-        
-        
-        # wenn :name angegeben wurde, mit aufnehmen
-        if(name = Options.value_for(options => :name))
-          self.add_with_name(component, name)
-        end
-        
-        component #zurückgeben
-      end
-      
       # Creates a MessageDialog.
       # - <tt>message</tt>: Message, to be displayed in this dialog.
       # - <tt>options</tt>: Options-Hash with the following valid values:

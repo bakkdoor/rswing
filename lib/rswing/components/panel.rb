@@ -24,14 +24,6 @@ module RSwing
         
         Container.add_if_requested(self, options)
       end
-      
-      def add(component, options = {})
-        super.add(component)
-        
-        if(name = Options.value_for(options => :name))
-          self.add_with_name(component, name)
-        end
-      end
     end 
   end
 end

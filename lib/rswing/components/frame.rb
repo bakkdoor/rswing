@@ -20,22 +20,6 @@ module RSwing
         end
       end
       
-      def add(component, options = {})
-        if(layout = Options.value_for(options => :layout))
-          self.content_pane.add(component, layout)
-        else
-          self.content_pane.add(component)
-        end
-        
-        
-        # wenn :name angegeben wurde, mit aufnehmen
-        if(name = Options.value_for(options => :name))
-          self.add_with_name(component, name)
-        end
-        
-        component #zurückgeben
-      end
-      
       # Sets the default close operation for this frame.
       # Valid operations are:
       # 1. <tt>:do_nothing_on_close</tt>

@@ -9,28 +9,29 @@ module Main
   Frame.new("hallo, welt", :size => [800, 600]) do |frame|
     frame.default_close_operation = :exit_on_close
 
-    Button.new("test", :belongs_to => frame, :name => :testButton) do |btn|
+    Panel.new(java.awt.GridLayout.new(1,1), :size => [300, 500], :name => :panel, :belongs_to => frame) do |panel|
+      Button.new("test", :belongs_to => panel, :name => :testButton) do |btn|
+        btn.on_click do
+          Dialog.showOption "bitte auswählen:", :option_type => :yes_no, :option_values => ["Aha", "ohno"],
+            :title => "auswahl treffen!", :belongs_to => frame
+        end
 
-      btn.on_click do
-        Dialog.showOption "bitte auswählen:", :option_type => :yes_no, :option_values => ["Aha", "ohno"],
-          :title => "auswahl treffen!", :belongs_to => frame
+        btn.on_click do
+          Dialog.show("mein text", :dialog_type => :error, :title => "hello, world", :belongs_to => frame)
+        end
+
+
+        btn.on_focus do
+          puts "button hat jetzt focus"
+        end
+
+        btn.on_focus_lost do
+          puts "button hat focus verloren"
+        end
       end
 
-      btn.on_click do
-        Dialog.show("mein text", :dialog_type => :error, :title => "hello, world", :belongs_to => frame)
-      end
-
-
-      btn.on_focus do
-        puts "button hat jetzt focus"
-      end
-
-      btn.on_focus_lost do
-        puts "button hat focus verloren"
-      end
+      puts "text von testButton: #{panel[:testButton].text}"
     end
-
-    puts "text von testButton: #{frame[:testButton].text}"
 
     #frame.size = [400, 400]
 
