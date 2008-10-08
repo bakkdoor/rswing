@@ -52,11 +52,23 @@ module RSwing
               x = ((screen_dimension.width - self.width) / 2).to_i
               y = ((screen_dimension.height - self.height) / 2).to_i
             when :upper_left
+              x = 0
+              y = 0
             when :upper_right
+              x = screen_dimension.width - self.width
+              y = 0
             when :lower_left
+              x = 0
+              y = screen_dimension.height - self.height
             when :lower_right
+              x = screen_dimension.width - self.width
+              y = screen_dimension.height - self.height
             when :top_center
+              x = ((screen_dimension.width - self.width) / 2).to_i
+              y = 0
             when :bottom_center
+              x = ((screen_dimension.width - self.width) / 2).to_i
+              y = screen_dimension.height - self.height
             end
             
             # set the new location for window
