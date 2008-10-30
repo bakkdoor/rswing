@@ -2,7 +2,7 @@ Gem::Specification.new do |s|
    s.name = "rswing"
    s.summary = "RSwing - Ruby-ish wrapper of Swing GUI-Framework for JRuby"
    s.description = %q{RSwing is a wrapper of the Swing GUI-Framework of the Java Platform for JRuby. The goal is to provide a ruby-ish wrapper library to Swing, which makes it feel more like an actual ruby library rather than just a plain interface to the java classes.}
-   s.version = "0.1.4"
+   s.version = "0.1.5"
    s.date = "2008-10-30"
    s.author = "Christopher Bertels"
    s.email = "bakkdoor@flasht.de"
@@ -19,6 +19,7 @@ Gem::Specification.new do |s|
      "lib/rswing/components/panel.rb", 
      "lib/rswing/components/text_field.rb",
      "lib/rswing/components/window.rb",
+     "lib/rswing/components/events/event.rb",
      "lib/rswing/components/events/focus_events.rb", 
      "lib/rswing/components/events/key_events.rb",
      "lib/rswing/components/events/mouse_events.rb"]
