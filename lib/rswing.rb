@@ -23,10 +23,18 @@ require "java"
 # expand search path to components subdir.
 $: << File.expand_path(File.dirname(__FILE__) + "/rswing/components")
 
+require "events/event"
+
+# add "has_event"-method to Module-class for easy access in event-modules.
+class Module
+  include RSwing::Components::Events::Event
+end
+
 # event-modules
 require "events/focus_events"
 require "events/key_events"
 require "events/mouse_events"
+
 
 # containers
 require "container"

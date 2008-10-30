@@ -23,25 +23,11 @@ module RSwing
       module MouseEvents
         MouseListener = java.awt.event.MouseListener
         
-        def on_mouse_clicked(&block)
-          self.add_key_listener(Listener.create(MouseListener, :mouseClicked, &block))
-        end
-      
-        def on_mouse_entered(&block)
-          self.add_key_listener(Listener.create(MouseListener, :mouseEntered, &block))
-        end
-      
-        def on_mouse_exited(&block)
-          self.add_key_listener(Listener.create(MouseListener, :mouseExited, &block))
-        end
-      
-        def on_mouse_pressed(&block)
-          self.add_key_listener(Listener.create(MouseListener, :mousePressed, &block))
-        end
-      
-        def on_mouse_released(&block)
-          self.add_key_listener(Listener.create(MouseListener, :mouseReleased, &block))
-        end
+        event_for self => :on_mouse_clicked, MouseListener => :mouseClicked
+        event_for self => :on_mouse_entered, MouseListener => :mouseEntered
+        event_for self => :on_mouse_exited, MouseListener => :mouseExited
+        event_for self => :on_mouse_pressed, MouseListener => :mousePressed
+        event_for self => :on_mouse_released, MouseListener => :mouseReleased
       end
     end
   end

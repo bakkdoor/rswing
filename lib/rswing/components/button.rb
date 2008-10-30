@@ -51,9 +51,7 @@ module RSwing
 
       # Eventhandler for clicked (actionPerformed) event.
       # Takes a block, which will be executed if this event occurs.
-      def on_click(&block)
-        self.add_action_listener(Listener.create(ActionListener, :actionPerformed, &block))
-      end
+      event_for self => :on_click, ActionListener => :actionPerformed
     end 
   end
 end

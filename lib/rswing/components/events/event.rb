@@ -20,16 +20,32 @@
 module RSwing
   module Components
     module Events
-      module FocusEvents
-        FocusListener = java.awt.event.FocusListener
+      module Event
+        def event_for(listener_class_method_hash)
+          module_with_event = listener_class_method_hash.keys.first
+          event_name = listener_class_method_hash.values.first
         
-        # Eventhandler for on_focus (focusGained) event.
-        # Takes a block, which will get executed, when this event is fired.
-        event_for self => :on_focus, FocusListener => :focusGained
+          event_listener_class = listener_class_method_hash.keys.last
+          java_method_name = listener_class_method_hash.values.last
         
-        # Eventhandler for focus_lost (focusLost) event.
-        # Takes a block, which will get executed, when this event is fired.
-        event_for self => :on_focus_lost, FocusListener => :focusLost
+          module_with_event.module_eval do
+            define_method("__real_#{event_name}") do |block, *args|
+              self.send("add#{event_listener_class.java_class.name.split(".").last}", 
+                        Listener.create(event_listener_class, java_method_name, &block))
+            end
+          
+            # some funky code here, since we need do define the interface-method
+            # which will itself call our 'real' method. this is a workaround for ruby 1.8 since 
+            # it isn't possible to define_method a method with a &block via define_method. should work in 1.9
+            # but for now, we keep it this (obviously ugly) way, since it works. 
+            eval <<-EOM
+              def #{event_name}(*args, &block)
+                __real_#{event_name}(block, args)
+              end
+            EOM
+            
+          end
+        end
       end
     end
   end
