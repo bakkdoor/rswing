@@ -20,11 +20,10 @@
 module RSwing
   module Components
     class Listener
-      # Erstellt eine Listener-Klasse des angegebenen listener_interfaces 
-      # (Java Listener Interface), die alle Interface-Methoden leer haelt
-      # ausser derjenigen, die mit <tt>methodname</tt> angegeben wurde
-      # (und deren Inhalt mit dem angegebenen <tt>block</tt> gefüllt wird).
-      # Gibt anschließend eine neue Instanz dieser Listener-Klasse zurück
+      # Creates a Listener-Class of the given listener_interface (Java Listener Interface)
+      # which has all interface methods implemented empty exceptt the one
+      # specified by <tt>methodname</tt>. Its method-body gets filled by the given <tt>block</tt>.
+      # Finally returns a new instance of this dynamically created Listener-Class.
       def self.create(listener_interface, methodname, &block)
         listener_class = Class.new() do
           include listener_interface
@@ -35,7 +34,7 @@ module RSwing
             end
           end
         end
-        # neue instanz zurückgeben
+        # return new instance of listener_class
         listener_class.new(methodname, &block)
       end
     end

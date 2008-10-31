@@ -56,8 +56,8 @@ module RSwing
       def self.value_for(hash)
         raise "Value must be a hash!" unless hash.kind_of? Hash
         hash.each_pair do |options_hash, option_key|
-          # es sollte nur ein paar angegeben werden, sodass wir einfach nur das erste nehmen
-          # und den entsprechenden wert zurückgeben
+          # it should only be one pair specified,
+          # so we can simply take the first and return the appropriate value
           return options_hash[option_key].nil? ? gui_options[option_key] : options_hash[option_key]
         end
       end

@@ -36,7 +36,7 @@ module RSwing
           self.border = border
         end      
         
-        # block aufrufen mit aktuellem objekt, falls vorhanden
+        # call block with current object, if given
         if block_given?
           yield self
         end

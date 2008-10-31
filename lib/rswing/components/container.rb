@@ -46,7 +46,7 @@ module RSwing
       # Raises an exception if name already taken.
       def add_with_name(component, name_symbol)
         if self.component_hash.has_key?(name_symbol)
-          raise "Name in Component bereits vergeben!"
+          raise "Name in component already taken!"
         else
           self.component_hash[name_symbol] = component
         end
