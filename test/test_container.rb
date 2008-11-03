@@ -1,9 +1,11 @@
 require "test/unit"
 
 require "rswing"
+require "test/test_helper"
 
 class TestContainer < Test::Unit::TestCase
   include RSwing::Components
+  include TestHelper
   
   def setup
     @container = Frame.new "my frame"
@@ -44,5 +46,10 @@ class TestContainer < Test::Unit::TestCase
     
     panel.add @button
     assert(panel.components.include?(@button), "panel should have button!")
+  end
+  
+  def test_events
+    frame = Frame.new "my frame"
+    should_have_events frame => [:on_focus, :on_focus_lost, :on_property_changed]
   end
 end

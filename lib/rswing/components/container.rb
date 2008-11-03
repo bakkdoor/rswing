@@ -21,6 +21,9 @@ module RSwing
   module Components
     module Container
       
+      include RSwing::Components::Component
+      include Events::ContainerEvents
+      
       # Adds a component with a set of options to this container.
       def add(component, options = {})
         if(self.respond_to?(:getContentPane))

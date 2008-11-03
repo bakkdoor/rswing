@@ -28,7 +28,6 @@ module RSwing
     # Can also be used to create custom dialogs by extending from this class.
     class Dialog < JDialog
       include Window
-      include Container
       
       def initialize(title, options = {}, &block)
         super(Options.value_for(options => :belongs_to), title, Options.value_for(options => :modal))

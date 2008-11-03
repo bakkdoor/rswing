@@ -20,6 +20,12 @@
 module RSwing
   module Components
     module Window
+      
+      include Container
+      
+      include Events::WindowState
+      include Events::WindowFocus
+      
       # Initializes a given Window object with some options.
       # Valid options include:
       # 1. <tt>:size => [100,200] # 100x200 pixels</tt> (default: nil)

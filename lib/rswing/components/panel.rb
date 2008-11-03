@@ -23,9 +23,6 @@ module RSwing
     
     class Panel < JPanel
       include Container
-      include Events::KeyEvents
-      include Events::MouseEvents
-      include Events::FocusEvents
       
       def initialize(options = {}, &block)
         super(Options.value_for(options => :layout_manager), Options.value_for(options => :double_buffer))

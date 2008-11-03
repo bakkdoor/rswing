@@ -1,15 +1,17 @@
 require "test/unit"
 
 require "rswing"
+require "test/test_helper"
 
 class TestButton < Test::Unit::TestCase
   include RSwing::Components
+  include TestHelper
   
   def setup
     @button = Button.new "hello world"
   end
   
   def test_events
-    assert(@button.respond_to?(:on_click), "no on_click method available!")
+    should_have_events @button => [:on_click, :on_focus, :on_focus_lost]
   end
 end

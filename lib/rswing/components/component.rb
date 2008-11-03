@@ -19,42 +19,18 @@
 
 module RSwing
   module Components
-    JFrame = javax.swing.JFrame
+    module Component
     
-    class Frame < JFrame
-      include Window
-      
-      # valid options are:
-      # 1. <tt>:size => [800, 600]</tt> 800x600 pixels (default: nil)
-      def initialize(title, options = {}, &block)
-        super(title)
-        
-        Window.init(self, options)
-        
-        # falls block übergeben wurde, mit aktuellem objekt aufrufen
-        if block_given?
-          yield self
-        end
-      end
-      
-      # Sets the default close operation for this frame.
-      # Valid operations are:
-      # 1. <tt>:do_nothing_on_close</tt>
-      # 2. <tt>:hide_on_close</tt> (default)
-      # 3. <tt>:dispose_on_close</tt>
-      # 4. <tt>:exit_on_close</tt>
-      def default_close_operation=(op = :hide_on_close)
-        case op
-        when :do_nothing_on_close
-          self.setDefaultCloseOperation(WindowConstants::DO_NOTHING_ON_CLOSE)
-        when :hide_on_close
-          self.setDefaultCloseOperation(WindowConstants::HIDE_ON_CLOSE)
-        when :dispose_on_close
-          self.setDefaultCloseOperation(WindowConstants::DISPOSE_ON_CLOSE)
-        when :exit_on_close
-          self.setDefaultCloseOperation(JFrame::EXIT_ON_CLOSE)
-        end
-      end
-    end
+    include Events::ComponentEvents
+    include Events::MouseEvents
+    include Events::MouseMotionEvents
+    include Events::MouseWheelEvents
+    include Events::KeyEvents
+    include Events::HierarchyBoundsEvents
+    include Events::InputMethodEvents
+    include Events::PropertyChanged
+    include Events::FocusEvents
+    
+    end 
   end
 end

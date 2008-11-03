@@ -31,12 +31,23 @@ class Module
 end
 
 # event-modules
+require "events/component_events"
+require "events/container_events"
 require "events/focus_events"
+require "events/hierarchy_bounds_events"
+require "events/input_method_events"
 require "events/key_events"
 require "events/mouse_events"
+require "events/mouse_motion_events"
+require "events/mouse_wheel_events"
+require "events/property_changed"
+require "events/window_events"
+require "events/window_focus"
+require "events/window_state"
 
 
 # containers
+require "component"
 require "container"
 require "window"
 
