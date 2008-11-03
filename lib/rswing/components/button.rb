@@ -24,7 +24,7 @@ module RSwing
     
     # Button-Class. Wraps JButton-Class.
     class Button < JButton
-      include Events::FocusEvents
+      include Component
       
       # - <tt>text</tt>: The Text to be displayed on the button.
       # - <tt>options</tt>: Options-Hash with the following valid values:
