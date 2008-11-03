@@ -29,7 +29,6 @@ module RSwing
         if(self.respond_to?(:getContentPane))
           self.add_to_content_pane(component, options)
         else
-#          this should be handled somehow later on:
           if(layout = Options.value_for(options => :layout))
             super(component, layout)
           else

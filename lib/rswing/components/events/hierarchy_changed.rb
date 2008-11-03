@@ -17,50 +17,14 @@
 # along with RSwing.  If not, see <http://www.gnu.org/licenses/>.             #
 ###############################################################################
 
-# needed for swing classes
-require "java"
-
-# expand search path to components subdir.
-$: << File.expand_path(File.dirname(__FILE__) + "/rswing/components")
-
-require "events/event"
-
-# add "has_event"-method to Module-class for easy access in event-modules.
-class Module
-  include RSwing::Components::Events::Event
-end
-
-# event-modules
-require "events/component_events"
-require "events/container_events"
-require "events/focus_events"
-require "events/hierarchy_bounds_events"
-require "events/hierarchy_changed"
-require "events/input_method_events"
-require "events/key_events"
-require "events/mouse_events"
-require "events/mouse_motion_events"
-require "events/mouse_wheel_events"
-require "events/property_changed"
-require "events/window_events"
-require "events/window_focus"
-require "events/window_state"
-
-
-# containers
-require "component"
-require "container"
-require "window"
-
-require "button"
-require "dialog"
-require "frame"
-require "listener"
-require "options"
-require "panel"
-require "text_field"
-
-# RSwing root module
-module RSwing  
-  include_package 'javax.swing'
+module RSwing
+  module Components
+    module Events
+      module HierarchyChanged
+        HierarchyListener = java.awt.event.HierarchyListener
+        
+        event_for self => :on_hierarchy_changed, HierarchyListener => :hierarchyChanged
+      end
+    end
+  end
 end
