@@ -23,6 +23,7 @@ module RSwing
       
       include Container
       
+      include Events::PropertyChanged
       include Events::WindowState
       include Events::WindowFocus
       

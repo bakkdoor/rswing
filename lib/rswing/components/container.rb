@@ -21,7 +21,8 @@ module RSwing
   module Components
     module Container
       
-      include RSwing::Components::Component
+      include Component
+      
       include Events::ContainerEvents
       
       # Adds a component with a set of options to this container.
