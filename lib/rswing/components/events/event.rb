@@ -49,7 +49,7 @@ module RSwing
       end
       
       # maps the events of a listener_class to a module, specified in a event_mappings_hash
-      # e.g. (in some Event-Module): <tt>Events::map self, FocusListener, FocusListener.event_mappings
+      # e.g. (in FocusEvents-Module): <tt>Events.map self, FocusListener, FocusEvents.event_mappings</tt>
       def Events.map(module_to_map, listener_class_to_map, event_mappings_hash)
         event_mappings_hash.each_pair do |ruby_event, java_method|
           event_for module_to_map => ruby_event, listener_class_to_map => java_method
