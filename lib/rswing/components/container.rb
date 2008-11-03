@@ -55,7 +55,7 @@ module RSwing
       # Removes a component from this container. 
       # Also removes it from the component_hash
       def remove(component)
-        super.remove(component)
+        super(component)
         # delete all entries with component as value in component_hash
         self.component_hash.delete_if { |key,value| value == component }
       end
@@ -67,6 +67,16 @@ module RSwing
           self.component_hash[name_symbol] # erstes hash mit diesem namen als key zurückgeben
         else
           nil
+        end
+      end
+      
+      # Returns the components of a container.
+      # If the container uses a content_pane, its components are returned.
+      def components
+        if self.respond_to?(:getContentPane)
+          self.content_pane.components
+        else
+          super
         end
       end
       
