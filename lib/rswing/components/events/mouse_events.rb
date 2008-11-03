@@ -23,11 +23,18 @@ module RSwing
       module MouseEvents
         MouseListener = java.awt.event.MouseListener
         
-        event_for self => :on_mouse_clicked, MouseListener => :mouseClicked
-        event_for self => :on_mouse_entered, MouseListener => :mouseEntered
-        event_for self => :on_mouse_exited, MouseListener => :mouseExited
-        event_for self => :on_mouse_pressed, MouseListener => :mousePressed
-        event_for self => :on_mouse_released, MouseListener => :mouseReleased
+        def MouseEvents.event_mappings
+          {
+            :on_mouse_clicked => :mouseClicked,
+            :on_mouse_entered => :mouseEntered,
+            :on_mouse_exited => :mouseExited,
+            :on_mouse_pressed => :mousePressed,
+            :on_mouse_released => :mouseReleased
+          }
+        end
+        
+        Events.map self, MouseListener, event_mappings
+        
       end
     end
   end

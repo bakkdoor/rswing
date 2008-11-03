@@ -23,10 +23,17 @@ module RSwing
       module ComponentEvents
         ComponentListener = java.awt.event.ComponentListener
         
-        event_for self => :on_component_hidden, ComponentListener => :componentHidden
-        event_for self => :on_component_moved, ComponentListener => :componentMoved
-        event_for self => :on_component_resized, ComponentListener => :componentResized
-        event_for self => :on_component_shown, ComponentListener => :componentShown
+        def ComponentEvents.event_mappings
+          {
+            :on_component_hidden => :componentHidden,
+            :on_component_moved => :componentMoved,
+            :on_component_resized => :componentResized,
+            :on_component_shown => :componentShown
+          }
+        end
+        
+        Events.map self, ComponentListener, event_mappings
+        
       end
     end
   end

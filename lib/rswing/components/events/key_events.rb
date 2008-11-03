@@ -23,9 +23,16 @@ module RSwing
       module KeyEvents
         KeyListener = java.awt.event.KeyListener
         
-        event_for self => :on_key_pressed, KeyListener => :keyPressed
-        event_for self => :on_key_released, KeyListener => :keyReleased
-        event_for self => :on_key_typed, KeyListener => :keyTyped
+        def KeyEvents.event_mappings
+          {
+            :on_key_pressed => :keyPressed,
+            :on_key_released => :keyReleased,
+            :on_key_typed => :keyTyped
+          }
+        end
+        
+        Events.map self, KeyListener, event_mappings
+        
       end
     end
   end

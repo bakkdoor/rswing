@@ -23,8 +23,15 @@ module RSwing
       module MouseMotionEvents
         MouseMotionListener = java.awt.event.MouseMotionListener
         
-        event_for self => :on_mouse_dragged, MouseMotionListener => :mouseDragged
-        event_for self => :on_mouse_moved, MouseMotionListener => :mouseMoved
+        def MouseMotionEvents.event_mappings
+          {
+            :on_mouse_dragged => :mouseDragged,
+            :on_mouse_moved => :mouseMoved
+          }
+        end
+        
+        Events.map self, MouseMotionListener, event_mappings
+        
       end
     end
   end

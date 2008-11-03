@@ -23,8 +23,15 @@ module RSwing
       module InputMethodEvents
         InputMethodListener = java.awt.event.InputMethodListener
         
-        event_for self => :on_input_method_text_changed, InputMethodListener => :inputMethodTextChanged
-        event_for self => :on_caret_position_changed, InputMethodListener => :caretPositionChanged
+        def InputMethodEvents.event_mappings
+          {
+            :on_input_method_text_changed => :inputMethodTextChanged,
+            :on_caret_position_changed => :caretPositionChanged
+          }
+        end
+        
+        Events.map self, InputMethodListener, event_mappings
+        
       end
     end
   end

@@ -50,6 +50,6 @@ class TestContainer < Test::Unit::TestCase
   
   def test_events
     frame = Frame.new "my frame"
-    should_have_events frame => [:on_focus, :on_focus_lost, :on_property_changed]
+    should_have_events frame => Events::ContainerEvents.event_mappings.keys
   end
 end

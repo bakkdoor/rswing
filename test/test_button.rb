@@ -12,6 +12,6 @@ class TestButton < Test::Unit::TestCase
   end
   
   def test_events
-    should_have_events @button => [:on_click, :on_focus, :on_focus_lost]
+    should_have_events @button => Events::ComponentEvents.event_mappings.keys
   end
 end

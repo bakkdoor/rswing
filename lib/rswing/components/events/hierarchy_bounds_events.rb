@@ -23,8 +23,15 @@ module RSwing
       module HierarchyBoundsEvents
         HierarchyBoundsListener = java.awt.event.HierarchyBoundsListener
         
-        event_for self => :on_ancestor_moved, HierarchyBoundsListener => :ancestorMoved
-        event_for self => :on_ancestor_resized, HierarchyBoundsListener => :ancestorResized
+        def HierarchyBoundsEvents.event_mappings
+          {
+            :on_ancestor_moved => :ancestorMoved,
+            :on_ancestor_resized => :ancestorResized
+          }
+        end
+        
+        Events.map self, HierarchyBoundsListener, event_mappings
+        
       end
     end
   end

@@ -23,8 +23,15 @@ module RSwing
       module ContainerEvents
         ContainerListener = java.awt.event.ContainerListener
         
-        event_for self => :on_component_added, ContainerListener => :componentAdded
-        event_for self => :on_component_removed, ContainerListener => :componentRemoved
+        def ContainerEvents.event_mappings
+          {
+            :on_component_added => :componentAdded,
+            :on_component_removed => :componentRemoved
+          }
+        end
+        
+        Events.map self, ContainerListener, event_mappings
+        
       end
     end
   end

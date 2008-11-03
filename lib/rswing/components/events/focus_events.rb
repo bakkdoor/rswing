@@ -23,13 +23,15 @@ module RSwing
       module FocusEvents
         FocusListener = java.awt.event.FocusListener
         
-        # Eventhandler for on_focus (focusGained) event.
-        # Takes a block, which will get executed, when this event is fired.
-        event_for self => :on_focus, FocusListener => :focusGained
+        def FocusEvents.event_mappings
+          {
+            :on_focus => :focusGained,
+            :on_focus_lost => :focusLost
+          }
+        end
         
-        # Eventhandler for focus_lost (focusLost) event.
-        # Takes a block, which will get executed, when this event is fired.
-        event_for self => :on_focus_lost, FocusListener => :focusLost
+        Events.map self, FocusListener, event_mappings
+        
       end
     end
   end

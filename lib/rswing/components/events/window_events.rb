@@ -23,13 +23,20 @@ module RSwing
       module WindowEvents
         WindowListener = java.awt.event.WindowListener
         
-        event_for self => :on_window_activated, WindowListener => :windowActivated
-        event_for self => :on_window_closed, WindowListener => :windowClosed
-        event_for self => :on_window_closing, WindowListener => :windowClosing
-        event_for self => :on_window_deactivated, WindowListener => :windowDeactivated
-        event_for self => :on_window_deiconified, WindowListener => :windowDeiconified
-        event_for self => :on_window_iconified, WindowListener => :windowIconified
-        event_for self => :on_window_opened, WindowListener => :windowOpened
+        def WindowEvents.event_mappings
+          {
+            :on_window_activated => :windowActivated,
+            :on_window_closed => :windowClosed,
+            :on_window_closing => :windowClosing,
+            :on_window_deactivated => :windowDeactivated,
+            :on_window_deiconified => :windowDeiconified,
+            :on_window_iconified => :windowIconified,
+            :on_window_opened => :windowOpened
+          }
+        end
+        
+        Events.map self, WindowListener, event_mappings
+        
       end
     end
   end

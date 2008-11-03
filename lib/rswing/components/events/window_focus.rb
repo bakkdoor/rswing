@@ -23,8 +23,15 @@ module RSwing
       module WindowFocus
         WindowFocusListener = java.awt.event.WindowFocusListener
         
-        event_for self => :on_window_focus, WindowFocusListener => :windowGainedFocus
-        event_for self => :on_window_focus_lost, WindowFocusListener => :windowLostFocus
+        def WindowFocus.event_mappings
+          {
+            :on_window_focus => :windowGainedFocus,
+            :on_window_focus_lost => :windowLostFocus
+          }
+        end
+        
+        Events.map self, WindowFocusListener, event_mappings
+        
       end
     end
   end
