@@ -19,33 +19,48 @@
 
 module RSwing
   module Components
-    JTextField = javax.swing.JTextField
+    JComboBox = javax.swing.JComboBox
     
-    class TextField < JTextField
+    class ComboBox < JComboBox
       include Component
       
+      # Valid items are either an array or a ComboBoxModel object.
+      # e.g.: <tt>["First item", "Second item"]</tt> (default: nil)
+      #
       # Valid options are:
-      # 1. <tt>:text => "text"</tt> (default: "")
-      # 2. <tt>:columns => 5</tt> (default: 10)
-      # 3. <tt>:doc => nil</tt> (default: nil)
-      # 4. <tt>:font => nil</tt> (default nil)
-      # 5. <tt>:visible => false</tt> (default: true)
-      # 6. <tt>:editable => false</tt> (default: true)
-      # 7. <tt>:belongs_to => container</tt> (default: nil)
-      # 8. <tt>:name => :text_field</tt> (default: nil)
-      def initialize(options = {})
-        if(options.empty?)
-          super()
+      # 1. <tt>:belongs_to => container</tt> (default: nil)
+      # 2. <tt>:name => :text_field</tt> (default: nil)
+      def initialize(items = nil, options = {})
+        if(items.kind_of? javax.swing.ComboBoxModel)
+          super(items)
+        elsif(items.kind_of? Array)
+          super(items.to_java(:Object))
         else
-          if(doc = Options.value_for(options => :doc))
-            super(doc, Options.value_for(options => :text), Options.value_for(options => :columns))
-          else
-            super(Options.value_for(options => :text), Options.value_for(options => :columns))
-          end
+          super()
         end
         
-        Container.add_if_requested(self, options)
+        unless options.empty?
+          Container.add_if_requested(self, options)
+        end
       end
+      
+      # Returns an item at a given index.
+      # Equivalent to ComboBox#item_at
+      def [](item_index)
+        self.item_at(item_index)
+      end
+      
+      # Returns the items of this ComboBox as an Array.
+      def items
+        @items = []
+        
+        self.item_count.times do |i|
+          @items << self[i]
+        end
+        
+        @items
+      end
+      
     end
   
   end

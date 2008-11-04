@@ -53,6 +53,7 @@ require "container"
 require "window"
 
 require "button"
+require "combo_box"
 require "dialog"
 require "frame"
 require "listener"
