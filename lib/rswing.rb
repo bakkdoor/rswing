@@ -31,6 +31,7 @@ class Module
 end
 
 # event-modules
+require "events/button_events"
 require "events/component_events"
 require "events/container_events"
 require "events/focus_events"
@@ -53,6 +54,7 @@ require "container"
 require "window"
 
 require "button"
+require "check_box"
 require "combo_box"
 require "dialog"
 require "frame"

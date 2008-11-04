@@ -44,7 +44,8 @@ module RSwing
           :size => nil,
           :location => nil,
           :columns => 10,
-          :text => ""
+          :text => "",
+          :selected => false
         }
       end
 

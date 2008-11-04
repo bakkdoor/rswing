@@ -19,23 +19,23 @@
 
 module RSwing
   module Components
-    JButton = javax.swing.JButton
+    JCheckBox = javax.swing.JCheckBox
     
-    # Button-Class. Wraps JButton-Class.
-    class Button < JButton
+    # CheckBox-Class. Wraps JCheckBox-Class.
+    class CheckBox < JCheckBox
       include Component
       include Events::ButtonEvents
       
-      # - <tt>text</tt>: The Text to be displayed on the button.
+      # - <tt>text</tt>: The Text to be displayed on the checkbox.
       # - <tt>options</tt>: Options-Hash with the following valid values:
       # 1. <tt>:visible => true</tt>
       # 2. <tt>:enabled => true</tt>
-      # 3. <tt>:belongs_to => nil</tt> # Container to which this button should be added (default: none)
+      # 3. <tt>:selected => true</tt> # (default: false)
       # 4. <tt>:layout => nil</tt> # Layout-Options (e.g. GridBagContraints-Object) (default: none)
-      # 5. <tt>:icon => nil</tt> # Icon-Symbol to be displayed next to/instead of the text on the button (default: none)
-      # 6. <tt>:name => :okButton</tt> Name of the buttons for access via parent-container (default: none)
+      # 5. <tt>:icon => nil</tt> # Icon-Symbol to be displayed next to/instead of the text on the checkbox (default: none)
+      # 6. <tt>:name => :check_box</tt> Name of the checkbox for access via parent-container (default: none)
       def initialize(text, options = {}, &block)
-        super(text)
+        super(text, Options.value_for(options => :selected))
         
         self.visible = Options.value_for(options => :visible)
         self.enabled = Options.value_for(options => :enabled)

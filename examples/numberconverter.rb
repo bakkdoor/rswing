@@ -1,7 +1,7 @@
 module Numberconverter
   
-  require "rubygems"
-  require "rswing"
+  #require "rubygems"
+  require "lib/rswing"
 
   include RSwing::Components
 
