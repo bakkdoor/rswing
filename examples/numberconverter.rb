@@ -38,7 +38,7 @@ module Numberconverter
   # eventhandler code
   panel = frame[:panel]
   panel[:button].on_click do
-     result = Dialog.showOption "Please select:", 
+     result = Dialog.show_option "Please select:", 
                                 :option_type => :yes_no, 
                                 :option_values => ["HEX", "BINARY"],
                                 :title => "Pick an option!", 

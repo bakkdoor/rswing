@@ -24,7 +24,7 @@ module RSwing
     
     # Dialog-Class.
     # Has static methods to create Message-Dialogs.
-    # (<tt>show()</tt> and <tt>showOptions</tt>).
+    # (<tt>show()</tt> and <tt>show_option</tt>).
     # Can also be used to create custom dialogs by extending from this class.
     class Dialog < JDialog
       include Window
@@ -79,7 +79,7 @@ module RSwing
       # 4. <tt>:modal => false</tt> (default: <tt>true</tt>)
       # 5. <tt>:icon => nil</tt> (default: nil)
       # 6. <tt>:belongs_to => parent</tt> Parent-Container for this dialog (default: nil)
-      def self.showOption(message, options = {})
+      def self.show_option(message, options = {})
         title = options[:title].nil? ? Options.gui_options[:option_default_title] : options[:title]
         icon = Options.value_for(options => :icon) 
         

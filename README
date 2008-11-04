@@ -42,7 +42,7 @@ Some examples:
 
     # options-dialog
     options = ["Yes", "No", "Cancel"]
-    selected_value = Dialog.showOption(options.join(" or ") + "?",
+    selected_value = Dialog.show_option(options.join(" or ") + "?",
                                         :option_values => options, 
                                         :option_type => :yes_no_cancel,
                                         :belongs_to => frame)
