@@ -40,6 +40,8 @@ module RSwing
         # if :name given, add with name
         if(name = Options.value_for(options => :name))
           self.add_with_name(component, name)
+          # also set components name attribute, if specified
+          component.name = name.to_s
         end
         
         component # return component
