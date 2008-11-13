@@ -1,8 +1,10 @@
+require 'rubygems'
 require "rake"
 require "rake/testtask"
 require "rake/rdoctask"
 require "rake/clean"
 require "rake/gempackagetask"
+require 'echoe'
  
 task :default => [ :test ]
 task :test    => [ :test_units ]
@@ -21,3 +23,17 @@ rd = Rake::RDocTask.new("doc") do |rd|
   rd.options << "--all"
   rd.rdoc_dir = "rdoc"
 end
+
+# echoe-related stuff for building gem & gemspec.
+
+Echoe.new('rswing', '0.2.3') do |p|
+  p.description    = %q{RSwing is a wrapper of the Swing GUI-Framework of the Java Platform for JRuby. The goal is to provide a ruby-ish wrapper library to Swing, which makes it feel more like an actual ruby library rather than just a plain interface to the java classes.}
+  p.summary        = "RSwing - Ruby-ish wrapper of Swing GUI-Framework for JRuby"
+  p.url            = "http://github.com/bakkdoor/rswing"
+  p.author         = "Christopher Bertels"
+  p.email          = "bakkdoor@flasht.de"
+  p.ignore_pattern = ["doc/*"]
+  p.development_dependencies = []
+end
+
+#Dir["#{File.dirname(__FILE__)}/tasks/*.rake"].sort.each { |ext| load ext }
